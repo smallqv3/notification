@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="try" style="border:none;width:100px;height:35px;background:#1ac756;color:#fff">点我测试</button>
+	
+	<script>
+		window.addEventListener("load", function(){
+		  if(Notification && Notification.permission !== "granted"){
+		      Notification.requestPermission(function(status){
+		          if(Notification.permission !== status){
+		              Notification.permission = status;
+		          }
+		      });
+		  }
+		});
+		var btn = document.querySelector('#try');
+		var title =  '这是测试标题';
+		var obj = {
+		    'lang':'utf8',
+		    'body':'this is a test body',
+		    'icon':'https://avatars3.githubusercontent.com/u/23520969?v=3&s=460'
+		  };
+		btn.onclick = function(){
+		  if(Notification && Notification.permission === "granted"){
+		    var notice = new Notification(title,obj);
+		    notice.onshow = function(){
+		      alert('已经显示桌面通知');
+		    }
+		    notice.onclick = function(){
+		      alert('stop click me');
+		    }
+		    notice.onclose = function(){
+		      alert('桌面通知已经关闭了');
+		    }
+		    notice.onerror = function(){
+		      alert('桌面通知出现了未知错误');
+		    }
+		  }else if(Notification && Notification.permission !== "denied"){
+		    alert('请允许桌面通知');
+		    location.reload();
+		  }
+		}
+	</script>
+</body>
+</html>
