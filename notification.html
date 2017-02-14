@@ -20,9 +20,10 @@
 		var btn = document.querySelector('#try');
 		var title =  '这是测试标题';
 		var obj = {
-		    'lang':'utf8',
-		    'body':'this is a test body',
-		    'icon':'https://avatars3.githubusercontent.com/u/23520969?v=3&s=460'
+		    'tag':'消息分组', // 标签
+		    'lang':'utf8', // 字符编码
+		    'body':'this is a test body', // 内容
+		    'icon':'https://avatars3.githubusercontent.com/u/23520969?v=3&s=460' // icon地址
 		  };
 		btn.onclick = function(){
 		  if(Notification && Notification.permission === "granted"){
